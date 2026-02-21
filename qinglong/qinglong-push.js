@@ -413,14 +413,19 @@ const weatherService = {
           return { error: '获取天气信息失败：数据结构异常' }
         }
 
-        const forecast = weatherData.forecast[0]
+        // const forecast = weatherData.forecast[0]
         return {
           city: data.cityInfo.city,
-          weather: forecast.type,
-          max_temperature: forecast.high.replace(/高温/, '').replace('℃', '').trim(),
-          min_temperature: forecast.low.replace(/低温/, '').replace('℃', '').trim(),
-          wind_direction: forecast.fx,
-          wind_scale: forecast.fl.replace(/级.*/, ''),
+          weather: weatherData.weatherCondition.TYPE,
+          max_temperature: weatherData.temperature.degrees,
+          min_temperature: '暂无',
+          wind_direction: weatherData.wind.direction.cardinal,
+          wind_scale: weatherData.wind.speed.value, //km/h
+          // weather: forecast.type,
+          // max_temperature: forecast.high.replace(/高温/, '').replace('℃', '').trim(),
+          // min_temperature: forecast.low.replace(/低温/, '').replace('℃', '').trim(),
+          // wind_direction: forecast.fx,
+          // wind_scale: forecast.fl.replace(/级.*/, ''),
           ganmao: weatherData.ganmao || ''
         }
       } else {
