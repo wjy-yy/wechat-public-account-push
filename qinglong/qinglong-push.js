@@ -408,15 +408,17 @@ const weatherService = {
         return httpClient.get(`https://weather.googleapis.com/v1/currentConditions:lookup?key=AIzaSyBI2RKq3SU_V6hfgggZV43cNFD5XAWGtDE&location.latitude=52.11&location.longitude=4.28`)
       }, '获取天气数据')
 
-      if (data.status === 200 && data.data) {
-        const weatherData = data.data
-        if (!data.cityInfo || !weatherData.forecast || !weatherData.forecast[0]) {
+      // if (data.status === 200 && data.data) {
+      if (data.currentTime) {
+        const weatherData = data
+        // if (!data.cityInfo || !weatherData.forecast || !weatherData.forecast[0]) {
+        if (!weatherData.weatherCondition || !weatherData.temperature || !weatherData.wind) {
           return { error: '获取天气信息失败：数据结构异常' }
         }
 
         // const forecast = weatherData.forecast[0]
         return {
-          city: data.cityInfo.city,
+          city: '暂无',
           weather: weatherData.weatherCondition.TYPE,
           max_temperature: weatherData.temperature.degrees,
           min_temperature: '暂无',
