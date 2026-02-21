@@ -404,7 +404,8 @@ const weatherService = {
       logInfo(`使用城市编码获取天气: ${city || '未知城市'} -> ${codeToUse}`)
 
       const data = await withRetry(async () => {
-        return httpClient.get(`http://t.weather.itboy.net/api/weather/city/${codeToUse}`)
+        // return httpClient.get(`http://t.weather.itboy.net/api/weather/city/${codeToUse}`)
+        return httpClient.get(`https://weather.googleapis.com/v1/currentConditions:lookup?key=AIzaSyBI2RKq3SU_V6hfgggZV43cNFD5XAWGtDE&location.latitude=52.11&location.longitude=4.28`)
       }, '获取天气数据')
 
       if (data.status === 200 && data.data) {
