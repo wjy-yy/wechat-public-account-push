@@ -419,7 +419,7 @@ const weatherService = {
         // const forecast = weatherData.forecast[0]
         return {
           city: '暂无',
-          weather: weatherData.weatherCondition.TYPE,
+          weather: weatherData.weatherCondition.type,
           max_temperature: weatherData.temperature.degrees,
           min_temperature: '暂无',
           wind_direction: weatherData.wind.direction.cardinal,
